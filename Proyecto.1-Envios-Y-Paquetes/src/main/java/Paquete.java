@@ -8,7 +8,14 @@ public class Paquete {
     /** cm3 que equivalen a 1 kg a efectos de facturación */
     private static final double FACTOR_VOLUMETRICO = 5000;
     private Dimension dimension;
+
     private double peso;
+    private double alto;
+    private double ancho;
+    private double largo;
+    private double peso;
+
+
     // TODO atributos: una Dimension y el peso real (kg)
 
     /**
@@ -33,15 +40,15 @@ public class Paquete {
 
     public Dimension getDimension() {
         // TODO
-        return null;
+        return dimension;
     }
 
     /**
      * @return el peso real en kg
      */
     public double getPeso() {
-        // TODO
-        return 0;
+
+        return peso;
     }
 
     /**
@@ -57,7 +64,7 @@ public class Paquete {
      */
     public double calcularPesoVolumetrico() {
         // TODO
-        return 0;
+        return dimension.calculo();
     }
 
     /**
