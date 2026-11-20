@@ -66,17 +66,40 @@ public Paquete paquete3;
      * @return true si ya no se pueden añadir más paquetes
      */
     public boolean estaCompleto() {
-        // TODO
+        // al principio pense en poner if(paquete3 != null){return true}false
+        //pero luego decidí usar el método
+        if (getNumeroPaquetes() == MAX_PAQUETES){
+            return true;
+        }
         return false;
+
     }
 
     /**
-     * Añade un paquete al envío si no está completo.
-     *
+     * Añade un paquete al envío si no está completo
      * @return true si se ha añadido, false si el envío estaba completo
      */
     public boolean addPaquete(Paquete paquete) {
-        // TODO
+        // if(estaCompleto() == true) o if(estaCompleto())
+        // algo += 1 ====> algo = algo + 1;
+       /* if (estaCompleto()) {
+        }*/
+
+        switch (getNumeroPaquetes()) {
+            case 0:
+                paquete1 = paquete;
+               return true;
+
+
+            case 1:
+                paquete2 = paquete;
+                return true;
+
+            case 2:
+                paquete3= paquete;
+                return true;
+
+        }
         return false;
     }
 
