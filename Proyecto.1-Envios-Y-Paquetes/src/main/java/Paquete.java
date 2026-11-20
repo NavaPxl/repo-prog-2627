@@ -64,7 +64,7 @@ public class Paquete {
      */
     public double calcularPesoVolumetrico() {
         // TODO
-        return dimension.calculo();
+        return dimension.calculo()/ FACTOR_VOLUMETRICO;
     }
 
     /**
@@ -73,15 +73,19 @@ public class Paquete {
      * @return el peso facturable en kg
      */
     public double calcularPesoFacturable() {
-        // TODO
-        return 0;
+        if(calcularPesoVolumetrico()>peso){
+            return calcularPesoVolumetrico();
+        }
+        return peso;
     }
 
     /**
      * @return por ejemplo "40.0 x 30.0 x 50.0 cm | 8.0 kg (facturable 12.0 kg)"
      */
+
+
     public String toString() {
-        // TODO
-        return "";
+
+        return alto + " x " + ancho + " x " + largo + " cm" + peso + "Kg  (facturable " + calcularPesoFacturable() + "Kg)" ;
     }
 }
