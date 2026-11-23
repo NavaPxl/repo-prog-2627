@@ -8,16 +8,16 @@
  */
 public class Envio {
     // TODO constante de clase MAX_PAQUETES (ver enunciado)
-public static final int MAX_PAQUETES = 3;
+    public static final int MAX_PAQUETES = 3;
 
     // TODO atributos: código de seguimiento, código postal y tres paquetes
-public String codSeg;
-public String cp;
+    public String codSeg;
+    public String cp;
 
-//DECLARAMOS CLASES
-public Paquete paquete1;
-public Paquete paquete2;
-public Paquete paquete3;
+    //DECLARAMOS CLASES
+    public Paquete paquete1;
+    public Paquete paquete2;
+    public Paquete paquete3;
 
     /**
      * Crea un envío sin paquetes.
@@ -51,11 +51,11 @@ public Paquete paquete3;
      */
     public int getNumeroPaquetes() {
         // TODO (se calcula comprobando qué atributos d paquete son null)
-        if (paquete1 == null){
+        if (paquete1 == null) {
             return 0;
         } else if (paquete2 == null) {
             return 1;
-        } else if (paquete3 == null){
+        } else if (paquete3 == null) {
             return 2;
         } else {
             return 3;
@@ -68,7 +68,7 @@ public Paquete paquete3;
     public boolean estaCompleto() {
         // al principio pense en poner if(paquete3 != null){return true}false
         //pero luego decidí usar el método
-        if (getNumeroPaquetes() == MAX_PAQUETES){
+        if (getNumeroPaquetes() == MAX_PAQUETES) {
             return true;
         }
         return false;
@@ -88,7 +88,7 @@ public Paquete paquete3;
         switch (getNumeroPaquetes()) {
             case 0:
                 paquete1 = paquete;
-               return true;
+                return true;
 
 
             case 1:
@@ -96,7 +96,7 @@ public Paquete paquete3;
                 return true;
 
             case 2:
-                paquete3= paquete;
+                paquete3 = paquete;
                 return true;
 
         }
@@ -109,7 +109,15 @@ public Paquete paquete3;
      * @return true si se ha añadido, false si el envío estaba completo
      */
     public boolean addPaquete(double alto, double ancho, double largo, double peso) {
-        // TODO
+        // creo primero el paquete segun las instrucciones
+        Paquete paquete = new Paquete();
+
+        //una vez creado compruebo si esta lleno --- añado
+        return addPaquete(paquete);}
+
+        // O FALSE
+
+
         return false;
     }
 
@@ -118,7 +126,21 @@ public Paquete paquete3;
      */
     public double calcularPesoReal() {
         // TODO
-        return 0;
+
+        double pesoTotal =0;
+
+        if (paquete1 != null) {
+            pesoTotal += paquete1.getPesoReal();
+        }
+        if (paquete2 != null){
+            pesoTotal += paquete2.getPesoReal();
+        }
+
+        if (paquete3 != null){
+            pesoTotal += paquete3.getPesoReal();
+        }
+
+        return pesoTotal;
     }
 
     /**
@@ -129,7 +151,25 @@ public Paquete paquete3;
      */
     public double calcularPesoFacturable() {
         // TODO
-        return 0;
+    double sumaPesoFactTot = 0;
+
+        if(paquete1 != null){
+            sumaPesoFactTot += paquete1.getPesoFacturable();
+
+        }
+
+        if(paquete2 != null){
+            sumaPesoFactTot += paquete2.getPesoFacturable();
+
+        }
+
+        if(paquete3 != null){
+            sumaPesoFactTot += paquete3.getPesoFacturable();
+
+        }
+    //Ahora voy a redondear hacia arriba con Math.ceil
+    return Math.ceil(sumaPesoFactTot);
+
     }
 
     /**
@@ -137,8 +177,24 @@ public Paquete paquete3;
      * antes; null si el envío no tiene paquetes
      */
     public Paquete getPaqueteMasPesado() {
-        // TODO
-        return null;
+        // Partimso de q si no hay paquete devolvemos null
+        if(paquete1 == null) {
+            return null;
+        }
+        //SI EL MAS PESADO ES EL:
+        // 1º
+        Paquete masPesado = paquete1;
+
+        // 2º
+        if (paquete2 != null && paquete2.getPesoReal() > masPesado.getPesoReal()){
+            masPesado = paquete2;
+        }
+
+        if (paquete3 != null && paquete3.getPesoReal() > masPesado.getPesoReal()){
+            masPesado = paquete3;
+        }
+
+        return masPesado;
     }
 
     /**
