@@ -201,7 +201,28 @@ public class Envio {
      * @return representación textual del envío (ver enunciado)
      */
     public String toString() {
-        // TODO
-        return "";
+
+        String resultado = "Envío: " + codSeg + "〖 CP Destino: " + cp + " 〗\n";
+        resultado += "Paquetes incluidos 〖" + getNumeroPaquetes() + "/" + MAX_PAQUETES + " 〗\n";
+
+        if (paquete1 != null) {
+            resultado += "Paquete 1: " + paquete1.toString() + "\n";
+        }
+
+        if (paquete2 != null) {
+            resultado += "Paquete 2: " + paquete2.toString() + "\n";
+        }
+
+        if (paquete3 != null) {
+            resultado += "Paquete 3: " + paquete3.toString() + "\n";
+        }
+
+        resultado += "Peso real total: " + calcularPesoReal() + " kg \n";
+        resultado += "Peso fatcurable totsl: " + calcularPesoFacturable() + " kg";
+
+
+
+
+        return resultado;
     }
 }
